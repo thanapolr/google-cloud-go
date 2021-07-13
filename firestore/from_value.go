@@ -285,7 +285,7 @@ func populateMap(vm reflect.Value, pm map[string]*pb.Value, c *Client) error {
 		if err := setReflectFromProtoValue(el, vproto, c); err != nil {
 			return err
 		}
-		_k := reflect.New(t.Key())
+		_k := reflect.New(t.Key()).Elem()
 		_k.SetString(k)
 		vm.SetMapIndex(_k, el)
 		//vm.SetMapIndex(reflect.ValueOf(k), el)
